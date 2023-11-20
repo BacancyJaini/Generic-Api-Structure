@@ -237,8 +237,8 @@
 		CE96533A2B0B5524002027BA /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
-				CE96533B2B0B5524002027BA /* Cofiguration+DarkSky.swift */,
 				CE96533C2B0B5524002027BA /* Configuration.swift */,
+				CE96533B2B0B5524002027BA /* Cofiguration+DarkSky.swift */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";

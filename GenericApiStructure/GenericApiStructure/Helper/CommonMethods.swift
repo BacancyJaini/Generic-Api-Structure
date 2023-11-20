@@ -10,8 +10,4 @@ import UIKit
 class CommonMethods {
     static let shared = CommonMethods()
     private init() {}
-    
-    func getPathWithId(path: String, id: Int) -> String {
-        return "\(path)/\(id)"
-    }
 }
