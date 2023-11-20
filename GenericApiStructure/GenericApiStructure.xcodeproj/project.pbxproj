@@ -55,6 +55,18 @@
 		CE9653A62B0B553E002027BA /* AddUpdateProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653882B0B553E002027BA /* AddUpdateProduct.swift */; };
 		CE9653A72B0B553E002027BA /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96538B2B0B553E002027BA /* AddProductViewController.swift */; };
 		CE9653AA2B0B5710002027BA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE9653A92B0B5710002027BA /* Kingfisher */; };
+		CE9653B32B0B6EC4002027BA /* ListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653B22B0B6EC4002027BA /* ListViewControllerTests.swift */; };
+		CE9653B72B0B6F2A002027BA /* ProductViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653B62B0B6F2A002027BA /* ProductViewModelTests.swift */; };
+		CE9653BC2B0B6F5F002027BA /* ProductsTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653BB2B0B6F5F002027BA /* ProductsTableViewCellTests.swift */; };
+		CE9653BE2B0B6F71002027BA /* NoDataTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653BD2B0B6F71002027BA /* NoDataTableViewCellTests.swift */; };
+		CE9653C02B0B6F86002027BA /* ProductsListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653BF2B0B6F86002027BA /* ProductsListViewControllerTests.swift */; };
+		CE9653CF2B0B7046002027BA /* AddProductViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653CE2B0B7046002027BA /* AddProductViewControllerTests.swift */; };
+		CE9653D12B0B7055002027BA /* AddProductViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653D02B0B7055002027BA /* AddProductViewModelTests.swift */; };
+		CE9653D32B0B706E002027BA /* UsersTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653D22B0B706E002027BA /* UsersTableViewCellTests.swift */; };
+		CE9653D52B0B707E002027BA /* UsersListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653D42B0B707E002027BA /* UsersListViewControllerTests.swift */; };
+		CE9653D72B0B7093002027BA /* UserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653D62B0B7093002027BA /* UserViewModelTests.swift */; };
+		CE9653D92B0B70AC002027BA /* AddUserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653D82B0B70AC002027BA /* AddUserViewModelTests.swift */; };
+		CE9653DB2B0B70BC002027BA /* AddUserViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653DA2B0B70BC002027BA /* AddUserViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +138,18 @@
 		CE9653862B0B553E002027BA /* AddProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductViewModel.swift; sourceTree = "<group>"; };
 		CE9653882B0B553E002027BA /* AddUpdateProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUpdateProduct.swift; sourceTree = "<group>"; };
 		CE96538B2B0B553E002027BA /* AddProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
+		CE9653B22B0B6EC4002027BA /* ListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewControllerTests.swift; sourceTree = "<group>"; };
+		CE9653B62B0B6F2A002027BA /* ProductViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModelTests.swift; sourceTree = "<group>"; };
+		CE9653BB2B0B6F5F002027BA /* ProductsTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTableViewCellTests.swift; sourceTree = "<group>"; };
+		CE9653BD2B0B6F71002027BA /* NoDataTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataTableViewCellTests.swift; sourceTree = "<group>"; };
+		CE9653BF2B0B6F86002027BA /* ProductsListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListViewControllerTests.swift; sourceTree = "<group>"; };
+		CE9653CE2B0B7046002027BA /* AddProductViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewControllerTests.swift; sourceTree = "<group>"; };
+		CE9653D02B0B7055002027BA /* AddProductViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewModelTests.swift; sourceTree = "<group>"; };
+		CE9653D22B0B706E002027BA /* UsersTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCellTests.swift; sourceTree = "<group>"; };
+		CE9653D42B0B707E002027BA /* UsersListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewControllerTests.swift; sourceTree = "<group>"; };
+		CE9653D62B0B7093002027BA /* UserViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelTests.swift; sourceTree = "<group>"; };
+		CE9653D82B0B70AC002027BA /* AddUserViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewModelTests.swift; sourceTree = "<group>"; };
+		CE9653DA2B0B70BC002027BA /* AddUserViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +218,11 @@
 		CE96531D2B0B5431002027BA /* GenericApiStructureTests */ = {
 			isa = PBXGroup;
 			children = (
+				CE9653AF2B0B6E67002027BA /* List */,
+				CE9653B42B0B6EFF002027BA /* Products */,
+				CE9653C12B0B6F97002027BA /* AddUpdateProduct */,
+				CE9653C22B0B6FA4002027BA /* Users */,
+				CE9653C32B0B6FAC002027BA /* AddUpdateUser */,
 				CE96531E2B0B5431002027BA /* GenericApiStructureTests.swift */,
 			);
 			path = GenericApiStructureTests;
@@ -345,8 +374,8 @@
 		CE9653642B0B553E002027BA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				CE9653652B0B553E002027BA /* ProductsTableViewCell.xib */,
 				CE9653662B0B553E002027BA /* ProductsTableViewCell.swift */,
+				CE9653652B0B553E002027BA /* ProductsTableViewCell.xib */,
 				CE9653672B0B553E002027BA /* NoDataTableViewCell.swift */,
 				CE9653682B0B553E002027BA /* NoDataTableViewCell.xib */,
 			);
@@ -466,8 +495,8 @@
 		CE96537E2B0B553E002027BA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				CE96537F2B0B553E002027BA /* UsersTableViewCell.xib */,
 				CE9653802B0B553E002027BA /* UsersTableViewCell.swift */,
+				CE96537F2B0B553E002027BA /* UsersTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -519,6 +548,181 @@
 			isa = PBXGroup;
 			children = (
 				CE96538B2B0B553E002027BA /* AddProductViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE9653AF2B0B6E67002027BA /* List */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653B02B0B6E77002027BA /* View */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		CE9653B02B0B6E77002027BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653B12B0B6E7D002027BA /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE9653B12B0B6E7D002027BA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653B22B0B6EC4002027BA /* ListViewControllerTests.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE9653B42B0B6EFF002027BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653B82B0B6F30002027BA /* View */,
+				CE9653B52B0B6F0B002027BA /* ViewModel */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
+		CE9653B52B0B6F0B002027BA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653B62B0B6F2A002027BA /* ProductViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE9653B82B0B6F30002027BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653B92B0B6F3A002027BA /* Cells */,
+				CE9653BA2B0B6F3F002027BA /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE9653B92B0B6F3A002027BA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653BB2B0B6F5F002027BA /* ProductsTableViewCellTests.swift */,
+				CE9653BD2B0B6F71002027BA /* NoDataTableViewCellTests.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CE9653BA2B0B6F3F002027BA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653BF2B0B6F86002027BA /* ProductsListViewControllerTests.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE9653C12B0B6F97002027BA /* AddUpdateProduct */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653C52B0B6FCE002027BA /* View */,
+				CE9653C42B0B6FC6002027BA /* ViewModel */,
+			);
+			path = AddUpdateProduct;
+			sourceTree = "<group>";
+		};
+		CE9653C22B0B6FA4002027BA /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653C82B0B6FF0002027BA /* View */,
+				CE9653C72B0B6FE8002027BA /* ViewModel */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		CE9653C32B0B6FAC002027BA /* AddUpdateUser */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653CC2B0B7011002027BA /* View */,
+				CE9653CB2B0B700A002027BA /* ViewModel */,
+			);
+			path = AddUpdateUser;
+			sourceTree = "<group>";
+		};
+		CE9653C42B0B6FC6002027BA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653D02B0B7055002027BA /* AddProductViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE9653C52B0B6FCE002027BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653C62B0B6FD5002027BA /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE9653C62B0B6FD5002027BA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653CE2B0B7046002027BA /* AddProductViewControllerTests.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE9653C72B0B6FE8002027BA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653D62B0B7093002027BA /* UserViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE9653C82B0B6FF0002027BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653C92B0B6FF6002027BA /* Cells */,
+				CE9653CA2B0B6FFA002027BA /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE9653C92B0B6FF6002027BA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653D22B0B706E002027BA /* UsersTableViewCellTests.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CE9653CA2B0B6FFA002027BA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653D42B0B707E002027BA /* UsersListViewControllerTests.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE9653CB2B0B700A002027BA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653D82B0B70AC002027BA /* AddUserViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE9653CC2B0B7011002027BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653CD2B0B7017002027BA /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE9653CD2B0B7017002027BA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE9653DA2B0B70BC002027BA /* AddUserViewControllerTests.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -708,7 +912,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE9653C02B0B6F86002027BA /* ProductsListViewControllerTests.swift in Sources */,
+				CE9653B32B0B6EC4002027BA /* ListViewControllerTests.swift in Sources */,
+				CE9653D32B0B706E002027BA /* UsersTableViewCellTests.swift in Sources */,
+				CE9653D12B0B7055002027BA /* AddProductViewModelTests.swift in Sources */,
+				CE9653B72B0B6F2A002027BA /* ProductViewModelTests.swift in Sources */,
+				CE9653D92B0B70AC002027BA /* AddUserViewModelTests.swift in Sources */,
+				CE9653BE2B0B6F71002027BA /* NoDataTableViewCellTests.swift in Sources */,
+				CE9653BC2B0B6F5F002027BA /* ProductsTableViewCellTests.swift in Sources */,
+				CE9653D72B0B7093002027BA /* UserViewModelTests.swift in Sources */,
+				CE9653CF2B0B7046002027BA /* AddProductViewControllerTests.swift in Sources */,
 				CE96531F2B0B5431002027BA /* GenericApiStructureTests.swift in Sources */,
+				CE9653D52B0B707E002027BA /* UsersListViewControllerTests.swift in Sources */,
+				CE9653DB2B0B70BC002027BA /* AddUserViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1138,7 +1354,7 @@
 				CE96532D2B0B5431002027BA /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Production;
+			defaultConfigurationName = Dev;
 		};
 		CE96532E2B0B5431002027BA /* Build configuration list for PBXNativeTarget "GenericApiStructure" */ = {
 			isa = XCConfigurationList;
@@ -1148,7 +1364,7 @@
 				CE9653302B0B5431002027BA /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Production;
+			defaultConfigurationName = Dev;
 		};
 		CE9653312B0B5431002027BA /* Build configuration list for PBXNativeTarget "GenericApiStructureTests" */ = {
 			isa = XCConfigurationList;
@@ -1158,7 +1374,7 @@
 				CE9653332B0B5431002027BA /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Production;
+			defaultConfigurationName = Dev;
 		};
 		CE9653342B0B5431002027BA /* Build configuration list for PBXNativeTarget "GenericApiStructureUITests" */ = {
 			isa = XCConfigurationList;
@@ -1168,7 +1384,7 @@
 				CE9653362B0B5431002027BA /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Production;
+			defaultConfigurationName = Dev;
 		};
 /* End XCConfigurationList section */
 
