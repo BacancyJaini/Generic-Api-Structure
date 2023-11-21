@@ -73,7 +73,14 @@ final class HttpUtility {
     
     static var commonHeaders: [String: String] {
         return [
-            "Content-Type": "application/json"
+            HeaderKeys.contentType: HeaderContentTypes.json
+        ]
+    }
+    
+    static var multipartHeaders: [String: String] {
+        return [
+            HeaderKeys.authorization: Constants.kBearer + Constants.jwtToken,
+            HeaderKeys.contentType: HeaderContentTypes.multipart
         ]
     }
 }
@@ -110,7 +117,7 @@ class ResponseHandler {
         do {
             let userResponse = try JSONDecoder().decode(modelType, from: data)
             completionHandler(.success(userResponse))
-        }catch {
+        } catch {
             completionHandler(.failure(.decoding(error)))
         }
     }

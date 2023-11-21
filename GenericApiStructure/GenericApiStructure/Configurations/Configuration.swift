@@ -36,7 +36,7 @@ enum Configuration: String {
         case .staging:
             return "https://staging.dummyjson.com/"
         case .production:
-            return "https://prod.dummyjson.com/"
+            return "https://app.irafinancialtrust.com/"
         }
     }
 }
