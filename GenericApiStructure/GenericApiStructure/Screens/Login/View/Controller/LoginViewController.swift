@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     private func getLoginRequest() -> LoginRequestModel {
-        return LoginRequestModel(appParams: "eyJwYWNrYWdlX25hbWUiOiJjb20uaXJhZmluYW5jaWFsZ3JvdXAuaXJhIn0=", authenticationType: 2, deviceId: "FA126D82-0DE0-4A72-8BC4-C7EBDC1FB69D", deviceType: Constants.iosDeviceType, password: passwordTextfield.text ?? Constants.kEmpty, username: usernameTextfield.text ?? Constants.kEmpty)
+        return LoginRequestModel(device: "portrait", wallpaperList: "all", pageno: 1, categoryId: "34")
     }
 }
 

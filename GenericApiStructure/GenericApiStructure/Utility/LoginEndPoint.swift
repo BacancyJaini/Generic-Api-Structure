@@ -37,6 +37,6 @@ extension LoginEndPoint: EndPointType {
     }
 
     var headers: [String : String]? {
-        HttpUtility.multipartHeaders
+        HttpUtility.commonHeaders
     }
 }

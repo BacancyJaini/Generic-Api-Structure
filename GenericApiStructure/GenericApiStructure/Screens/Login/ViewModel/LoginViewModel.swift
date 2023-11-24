@@ -17,6 +17,7 @@ final class LoginViewModel {
     func login(model: LoginRequestModel) {
         self.eventHandler?(.loading)
         httpUtility?.request(modelType: LoginResponse.self,
+                            // model: model,
                              type: LoginEndPoint.login(model: model)) { response in
             self.eventHandler?(.stopLoading)
             switch response {

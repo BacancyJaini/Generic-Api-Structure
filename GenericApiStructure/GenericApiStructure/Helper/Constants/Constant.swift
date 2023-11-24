@@ -50,7 +50,7 @@ struct ApiEndPoints {
     static var addUser = "users/add"
     static var searchUsers = "users/search"
     
-    static var login = "account/index.php?option=com_api&app=users&resource=login&format=raw"
+    static var login = "App_wallpapers/Admin/api.php"
 }
 
 struct SwipeActions {

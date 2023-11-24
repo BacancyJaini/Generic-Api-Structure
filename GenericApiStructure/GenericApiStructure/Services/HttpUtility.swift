@@ -30,6 +30,7 @@ final class HttpUtility {
     }
     
     func request<T: Codable>(modelType: T.Type,
+                           //  model: LoginRequestModel? = nil,
                              type: EndPointType,
                              completion: @escaping ResultHandler<T>) {
         guard let url = type.url else {
@@ -46,7 +47,40 @@ final class HttpUtility {
             request.url = components?.url
         } else if let parameters = type.body {
             request.httpBody = try? JSONEncoder().encode(parameters)
+//            let contents = String(data: request.httpBody!, encoding: .utf8)
+//            print("req ==", contents!)
         }
+        
+        /*let lineBreak = "\r\n"
+        
+        let boundary = "---------------------------------\(UUID().uuidString)"
+        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "content-type")
+        
+        var requestData = Data()
+        
+        requestData.append("--\(boundary)\r\n" .data(using: .utf8)!)
+        requestData.append("content-disposition: form-data; name=\"device\" \(lineBreak + lineBreak)" .data(using: .utf8)!)
+        requestData.append(model!.device .data(using: .utf8)!)
+        
+        requestData.append("\(lineBreak)--\(boundary)\r\n" .data(using: .utf8)!)
+        requestData.append("content-disposition: form-data; name=\"category_id\" \(lineBreak + lineBreak)" .data(using: .utf8)!)
+        requestData.append("\(model!.categoryId + lineBreak)" .data(using: .utf8)!)
+        
+        requestData.append("\(lineBreak)--\(boundary)\r\n" .data(using: .utf8)!)
+        requestData.append("content-disposition: form-data; name=\"wallpaper_list\" \(lineBreak + lineBreak)" .data(using: .utf8)!)
+        requestData.append("\(model!.wallpaperList + lineBreak)" .data(using: .utf8)!)
+        
+        requestData.append("\(lineBreak)--\(boundary)\r\n" .data(using: .utf8)!)
+        requestData.append("content-disposition: form-data; name=\"pageno\" \(lineBreak + lineBreak)" .data(using: .utf8)!)
+        requestData.append("\("\(model?.pageno ?? 1)" + lineBreak)" .data(using: .utf8)!)
+        
+        requestData.append("--\(boundary)--\(lineBreak)" .data(using: .utf8)!)
+        
+        request.addValue("\(requestData.count)", forHTTPHeaderField: "content-length")
+        request.httpBody = requestData
+        
+        let multipartStr = String(decoding: requestData, as: UTF8.self) //to view the multipart form string
+        print("new req ==", multipartStr)*/
         
         request.allHTTPHeaderFields = type.headers
         
@@ -55,6 +89,8 @@ final class HttpUtility {
             switch result {
             case .success(let data):
                 // Json parsing - Decoder - DATA TO MODEL
+//                let contents = String(data: data, encoding: .utf8) //to view the response string
+//                print("res ==", contents!)
                 self.responseHandler.parseResonseDecode(
                     data: data,
                     modelType: modelType) { response in

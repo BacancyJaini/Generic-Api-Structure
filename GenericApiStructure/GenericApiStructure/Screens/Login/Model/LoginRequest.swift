@@ -7,19 +7,15 @@
 
 import Foundation
 struct LoginRequestModel: Encodable {
-    let appParams: String
-    let authenticationType: Int
-    let deviceId: String
-    let deviceType: String
-    let password: String
-    let username: String
+    let device: String
+    let wallpaperList: String
+    let pageno: Int
+    let categoryId: String
     
     enum CodingKeys: String, CodingKey {
-        case appParams = "app_params"
-        case authenticationType = "authentication_type"
-        case deviceId = "device_id"
-        case deviceType = "device_type"
-        case username
-        case password
+        case device
+        case wallpaperList = "wallpaper_list"
+        case pageno
+        case categoryId = "category_id"
     }
 }
