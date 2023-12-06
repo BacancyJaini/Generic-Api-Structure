@@ -18,7 +18,7 @@ extension ProductsListViewController: UITableViewDataSource, UITableViewDelegate
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoDataTableViewCell") as? NoDataTableViewCell else {
                 return UITableViewCell()
             }
-            cell.noDataLabel.text = Constants.kNoData
+            cell.noData = Constants.kNoData
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductsTableViewCell") as? ProductsTableViewCell else {

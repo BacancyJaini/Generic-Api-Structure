@@ -18,7 +18,7 @@ extension UsersListViewController: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoDataTableViewCell") as? NoDataTableViewCell else {
                 return UITableViewCell()
             }
-            cell.noDataLabel.text = Constants.kNoData
+            cell.noData = Constants.kNoData
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "UsersTableViewCell") as? UsersTableViewCell else {
@@ -74,7 +74,7 @@ extension UsersListViewController: UISearchBarDelegate {
             let workItem = DispatchWorkItem { [weak self] in
                 guard let self else { return }
                 let requestModel = SearchData(q: searchText)
-                self.userViewModel.searchProducts(model: requestModel)
+                self.userViewModel.searchUsers(model: requestModel)
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: workItem)
             self.workItem = workItem

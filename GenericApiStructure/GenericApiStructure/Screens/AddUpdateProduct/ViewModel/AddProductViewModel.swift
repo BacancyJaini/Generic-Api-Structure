@@ -8,16 +8,17 @@
 import Foundation
 final class AddProductViewModel {
     var eventHandler: ((_ event: Event) -> Void)? // Data Binding Closure
-    var httpUtility: HttpUtility?
+    var serviceManager: ServiceManagerProtocol?
     
-    init(httpUtility: HttpUtility = HttpUtility()) {
-        self.httpUtility = httpUtility
+    init(serviceManager: ServiceManagerProtocol) {
+        self.serviceManager = serviceManager
     }
     
     func fetchProduct(model: DataRequestModel) {
         self.eventHandler?(.loading)
-        httpUtility?.request(modelType: Product.self,
-                                   type: ProductEndPoint.getProduct(model: model)) { response in
+        serviceManager?.fetchProduct(type: ProductEndPoint.getProduct(model: model),
+                                  completion: { [weak self] response in
+            guard let self else { return }
             self.eventHandler?(.stopLoading)
             switch response {
             case .success:
@@ -25,13 +26,14 @@ final class AddProductViewModel {
             case .failure(let error):
                 self.eventHandler?(.error(error))
             }
-        }
+        })
     }
     
     func addOrUpdateProduct(type: EndPointType) {
         self.eventHandler?(.loading)
-        httpUtility?.request(modelType: Product.self,
-                                   type: type) { response in
+        serviceManager?.addOrUpdateProduct(type: type,
+                                        completion: { [weak self] response in
+            guard let self else { return }
             self.eventHandler?(.stopLoading)
             switch response {
             case .success(let product):
@@ -39,7 +41,7 @@ final class AddProductViewModel {
             case .failure(let error):
                 self.eventHandler?(.error(error))
             }
-        }
+        })
     }
 }
 

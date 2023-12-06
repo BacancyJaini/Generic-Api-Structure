@@ -11,7 +11,7 @@
         <!--List Items-->
         <scene sceneID="ky9-zO-Jon">
             <objects>
-                <viewController title="List Items" id="5F0-zg-rkc" customClass="ListViewController" customModule="API_Structure" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListViewController" title="List Items" id="5F0-zg-rkc" customClass="ListViewController" customModule="GenericApiStructure" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YqN-ma-1rc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,7 +46,7 @@
         <!--Product List-->
         <scene sceneID="zwc-cg-yhX">
             <objects>
-                <viewController storyboardIdentifier="ProductsListViewController" id="8Kj-IF-JNW" customClass="ProductsListViewController" customModule="API_Structure" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductsListViewController" id="8Kj-IF-JNW" customClass="ProductsListViewController" customModule="GenericApiStructure" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cif-Oi-yPK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,7 +98,7 @@
         <!--Add Product-->
         <scene sceneID="Vtq-hi-JaA">
             <objects>
-                <viewController storyboardIdentifier="AddProductViewController" id="igp-BN-hVo" customClass="AddProductViewController" customModule="API_Structure" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddProductViewController" id="igp-BN-hVo" customClass="AddProductViewController" customModule="GenericApiStructure" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dxg-Oz-vho">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,7 +195,7 @@
         <!--Add User-->
         <scene sceneID="I99-tW-n5c">
             <objects>
-                <viewController storyboardIdentifier="AddUserViewController" id="iNq-tp-Wla" customClass="AddUserViewController" customModule="API_Structure" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddUserViewController" id="iNq-tp-Wla" customClass="AddUserViewController" customModule="GenericApiStructure" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eSM-Sh-6mK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -301,7 +301,7 @@
         <!--User List-->
         <scene sceneID="58V-R8-gsj">
             <objects>
-                <viewController storyboardIdentifier="UsersListViewController" id="1vk-XE-L5Y" customClass="UsersListViewController" customModule="API_Structure" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UsersListViewController" id="1vk-XE-L5Y" customClass="UsersListViewController" customModule="GenericApiStructure" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zE2-eO-Qnh">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

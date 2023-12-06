@@ -12,6 +12,12 @@ class NoDataTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet weak var noDataLabel: UILabel!
     
+    // MARK: - Variables
+    var noData = Constants.kEmpty {
+        didSet {
+            noDataLabel.text = noData
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

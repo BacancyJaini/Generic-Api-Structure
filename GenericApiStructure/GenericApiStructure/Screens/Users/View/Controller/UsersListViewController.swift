@@ -13,7 +13,7 @@ class UsersListViewController: UIViewController {
     @IBOutlet weak var usersSearchBar: UISearchBar!
     
     // MARK: - Variables
-    var userViewModel = UserViewModel(httpUtility: HttpUtility())
+    var userViewModel = UserViewModel(serviceManager: ServiceManager())
     var workItem: DispatchWorkItem?
     
     override func viewDidLoad() {

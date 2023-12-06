@@ -19,7 +19,7 @@ class AddUserViewController: UIViewController {
     // MARK: - Variables
     var addUpdateUserHandler: ((_ user: User, _ isAddUser: Bool) -> Void)?
     var user: User?
-    private var addUserViewModel = AddUserViewModel(httpUtility: HttpUtility())
+    var addUserViewModel = AddUserViewModel(serviceManager: ServiceManager())
     private lazy var isAddNewUser: Bool = {
         return user?.id == nil
     }()
@@ -81,7 +81,7 @@ extension AddUserViewController {
         }
     }
     
-    private func getRequestModel() -> AddUpdateUser {
+    func getRequestModel() -> AddUpdateUser {
         let age = Double(ageTextField.text ?? Constants.kEmpty)
         var requestModel = AddUpdateUser(firstName: firstNameTextField.text ?? Constants.kEmpty, lastName: lastNameTextField.text ?? Constants.kEmpty, age: age ?? Constants.kZeroDouble)
         if !isAddNewUser {
@@ -98,7 +98,7 @@ extension AddUserViewController {
         
         if (addUserViewModel.isValidData(model: requestModel)) {
             let type = isAddNewUser ? UserEndPoint.addUser(model: requestModel) : UserEndPoint.updateUser(model: requestModel)
-            addUserViewModel.addOrUpdateProduct(type: type)
+            addUserViewModel.addOrUpdateUser(type: type)
         }
     }
 }

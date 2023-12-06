@@ -14,7 +14,7 @@ class ProductsListViewController: UIViewController {
     @IBOutlet weak var productsSearchBar: UISearchBar!
     
     // MARK: - Variables
-    var productViewModel = ProductViewModel(httpUtility: HttpUtility())
+    var productViewModel = ProductViewModel(serviceManager: ServiceManager())
     var workItem: DispatchWorkItem?
     
     override func viewDidLoad() {

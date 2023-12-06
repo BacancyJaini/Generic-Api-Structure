@@ -18,7 +18,7 @@ class AddProductViewController: UIViewController {
     // MARK: - Variables
     var addUpdateProductHandler: ((_ product: Product, _ isAddProduct: Bool) -> Void)?
     var product: Product?
-    private var addProductViewModel = AddProductViewModel(httpUtility: HttpUtility())
+    var addProductViewModel = AddProductViewModel(serviceManager: ServiceManager())
     private lazy var isAddNewProduct: Bool = {
         return product?.id == nil
     }()
@@ -38,7 +38,7 @@ extension AddProductViewController {
         observeEvent()
     }
     
-    private func setupUpdateUi() {
+    func setupUpdateUi() {
         if !isAddNewProduct {
             navigationItem.title = Constants.kUpdateHeader
             addUpdateButton.setTitle(Constants.kUpdateButton, for: .normal)
@@ -79,7 +79,7 @@ extension AddProductViewController {
         }
     }
     
-    private func getRequestModel() -> AddUpdateProduct {
+    func getRequestModel() -> AddUpdateProduct {
         var requestModel = AddUpdateProduct(title: titleTextField.text ?? Constants.kEmpty, description: descriptionTextField.text ?? Constants.kEmpty)
         if !isAddNewProduct {
             requestModel.id = product?.id
