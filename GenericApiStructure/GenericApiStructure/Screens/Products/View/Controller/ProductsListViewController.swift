@@ -14,8 +14,9 @@ class ProductsListViewController: UIViewController {
     @IBOutlet weak var productsSearchBar: UISearchBar!
     
     // MARK: - Variables
-    var productViewModel = ProductViewModel(serviceManager: ServiceManager())
+    var productViewModel: ProductViewModel!
     var workItem: DispatchWorkItem?
+    var serviceManager: ServiceManagerProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class ProductsListViewController: UIViewController {
 
 extension ProductsListViewController {
     private func initialConfiguration() {
+        productViewModel = ProductViewModel(serviceManager: serviceManager)
         productsTableView.register(UINib(nibName: "ProductsTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductsTableViewCell")
         productsTableView.register(UINib(nibName: "NoDataTableViewCell", bundle: nil), forCellReuseIdentifier: "NoDataTableViewCell")
         initViewModel()

@@ -36,8 +36,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 1:
             vc = Storyboards.main.viewController(vc: UsersListViewController.self)
+            (vc as! UsersListViewController).serviceManager = ServiceManager()
         default:
             vc = Storyboards.main.viewController(vc: ProductsListViewController.self)
+            (vc as! ProductsListViewController).serviceManager = ServiceManager()
         }
         navigationController?.pushViewController(vc!, animated: true)
     }

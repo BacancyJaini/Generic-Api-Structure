@@ -15,9 +15,9 @@ final class ProductsListViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         viewControllerUnderTest = Storyboards.main.viewController(vc: ProductsListViewController.self)
+        viewControllerUnderTest.serviceManager = MockServiceManager()
         viewControllerUnderTest.loadViewIfNeeded()
-        viewControllerUnderTest.productViewModel = ProductViewModel(serviceManager: MockServiceManager())
-        viewControllerUnderTest.productViewModel.products = ("AllProduct".loadJson(ofType: AllProducts.self))?.products ?? []
+        viewControllerUnderTest.productViewModel?.products = ("AllProduct".loadJson(ofType: AllProducts.self))?.products ?? []
     }
     
     override func tearDown() {
@@ -58,7 +58,7 @@ final class ProductsListViewControllerTests: XCTestCase {
     }
     
     func testTableViewNumberOfRows() {
-        XCTAssertEqual(viewControllerUnderTest.tableView(viewControllerUnderTest.productsTableView, numberOfRowsInSection: 0), viewControllerUnderTest.productViewModel.products.count)
+        XCTAssertEqual(viewControllerUnderTest.tableView(viewControllerUnderTest.productsTableView, numberOfRowsInSection: 0), viewControllerUnderTest.productViewModel?.products.count)
     }
     
     func testTableViewCellForRow() {

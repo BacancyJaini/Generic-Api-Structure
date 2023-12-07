@@ -13,8 +13,9 @@ class UsersListViewController: UIViewController {
     @IBOutlet weak var usersSearchBar: UISearchBar!
     
     // MARK: - Variables
-    var userViewModel = UserViewModel(serviceManager: ServiceManager())
+    var userViewModel: UserViewModel!
     var workItem: DispatchWorkItem?
+    var serviceManager: ServiceManagerProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class UsersListViewController: UIViewController {
 
 extension UsersListViewController {
     private func initialConfiguration() {
+        userViewModel = UserViewModel(serviceManager: serviceManager)
         usersTableView.register(UINib(nibName: "UsersTableViewCell", bundle: nil), forCellReuseIdentifier: "UsersTableViewCell")
         usersTableView.register(UINib(nibName: "NoDataTableViewCell", bundle: nil), forCellReuseIdentifier: "NoDataTableViewCell")
         initViewModel()
@@ -32,11 +34,11 @@ extension UsersListViewController {
     }
     
     private func initViewModel() {
-        userViewModel.fetchUsers()
+        userViewModel?.fetchUsers()
     }
     
     private func observeEvent() {
-        userViewModel.eventHandler = { [weak self] event in
+        userViewModel?.eventHandler = { [weak self] event in
             guard let self else { return }
             switch event {
             case .loading:
@@ -60,8 +62,8 @@ extension UsersListViewController {
     }
     
     func resetSearchBarWithData() {
-        userViewModel.users.removeAll()
-        userViewModel.users.append(contentsOf: userViewModel.initialUsersData)
+        userViewModel?.users.removeAll()
+        userViewModel?.users.append(contentsOf: userViewModel?.initialUsersData ?? [])
         DispatchQueue.main.async {
             self.usersTableView.reloadData()
         }

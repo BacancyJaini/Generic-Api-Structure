@@ -15,9 +15,9 @@ final class UsersListViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         viewControllerUnderTest = Storyboards.main.viewController(vc: UsersListViewController.self)
+        viewControllerUnderTest.serviceManager = MockServiceManager()
         viewControllerUnderTest.loadViewIfNeeded()
-        viewControllerUnderTest.userViewModel = UserViewModel(serviceManager: MockServiceManager())
-        viewControllerUnderTest.userViewModel.users = ("AllUsers".loadJson(ofType: AllUsers.self))?.users ?? []
+        viewControllerUnderTest.userViewModel?.users = ("AllUsers".loadJson(ofType: AllUsers.self))?.users ?? []
     }
     
     override func tearDown() {
@@ -58,7 +58,7 @@ final class UsersListViewControllerTests: XCTestCase {
     }
     
     func testTableViewNumberOfRows() {
-        XCTAssertEqual(viewControllerUnderTest.tableView(viewControllerUnderTest.usersTableView, numberOfRowsInSection: 0), viewControllerUnderTest.userViewModel.users.count)
+        XCTAssertEqual(viewControllerUnderTest.tableView(viewControllerUnderTest.usersTableView, numberOfRowsInSection: 0), viewControllerUnderTest.userViewModel?.users.count)
     }
     
     func testTableViewCellForRow() {
