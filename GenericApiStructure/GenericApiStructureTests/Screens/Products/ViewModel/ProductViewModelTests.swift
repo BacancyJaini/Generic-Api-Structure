@@ -42,10 +42,10 @@ final class ProductViewModelTests: XCTestCase {
     func testDeleteProduct() {
         let expectation = self.expectation(description: "deleting product")
         
-        let model = DataRequestModel(id: 1)
+        let model = 1.requestModel
         viewModelUnderTest?.deleteProduct(model: model, index: 0)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             expectation.fulfill()
         }
         

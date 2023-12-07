@@ -44,8 +44,10 @@ final class UserViewModel {
             self.eventHandler?(.stopLoading)
             switch response {
             case .success:
-                self.users.remove(at: index)
-                self.eventHandler?(.userDeleted)
+                if self.users.count > index {
+                    self.users.remove(at: index)
+                    self.eventHandler?(.userDeleted)
+                }
             case .failure(let error):
                 self.eventHandler?(.error(error))
             }

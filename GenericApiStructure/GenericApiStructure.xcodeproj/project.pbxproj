@@ -69,6 +69,8 @@
 		CE9653D72B0B7093002027BA /* UserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653D62B0B7093002027BA /* UserViewModelTests.swift */; };
 		CE9653D92B0B70AC002027BA /* AddUserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653D82B0B70AC002027BA /* AddUserViewModelTests.swift */; };
 		CE9653DB2B0B70BC002027BA /* AddUserViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9653DA2B0B70BC002027BA /* AddUserViewControllerTests.swift */; };
+		CE9F0D022B21E51300387E3D /* Encodable+ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F0D012B21E51300387E3D /* Encodable+ExtensionTests.swift */; };
+		CE9F0D042B21E62E00387E3D /* String+ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F0D032B21E62E00387E3D /* String+ExtensionTests.swift */; };
 		CEA6A9172B10B89D00182B6F /* Product.json in Resources */ = {isa = PBXBuildFile; fileRef = CEA6A9162B10B89D00182B6F /* Product.json */; };
 		CEA6A9182B10BE6D00182B6F /* Product.json in Resources */ = {isa = PBXBuildFile; fileRef = CEA6A9162B10B89D00182B6F /* Product.json */; };
 		CEA6A91B2B10C15E00182B6F /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = CEA6A91A2B10C15E00182B6F /* User.json */; };
@@ -159,6 +161,8 @@
 		CE9653D62B0B7093002027BA /* UserViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelTests.swift; sourceTree = "<group>"; };
 		CE9653D82B0B70AC002027BA /* AddUserViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewModelTests.swift; sourceTree = "<group>"; };
 		CE9653DA2B0B70BC002027BA /* AddUserViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewControllerTests.swift; sourceTree = "<group>"; };
+		CE9F0D012B21E51300387E3D /* Encodable+ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+ExtensionTests.swift"; sourceTree = "<group>"; };
+		CE9F0D032B21E62E00387E3D /* String+ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ExtensionTests.swift"; sourceTree = "<group>"; };
 		CEA6A9162B10B89D00182B6F /* Product.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Product.json; sourceTree = "<group>"; };
 		CEA6A91A2B10C15E00182B6F /* User.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
 		CEA6A91D2B10D8E000182B6F /* AllProduct.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AllProduct.json; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 		CE96531D2B0B5431002027BA /* GenericApiStructureTests */ = {
 			isa = PBXGroup;
 			children = (
+				CE9F0CFE2B21E4D200387E3D /* Extensions */,
 				CE8769C42B20507500AE6F3D /* Services */,
 				CE8769C32B20506900AE6F3D /* Screens */,
 			);
@@ -757,6 +762,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		CE9F0CFE2B21E4D200387E3D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE9F0D012B21E51300387E3D /* Encodable+ExtensionTests.swift */,
+				CE9F0D032B21E62E00387E3D /* String+ExtensionTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CEA6A9152B10B52600182B6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -969,6 +983,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE9653C02B0B6F86002027BA /* ProductsListViewControllerTests.swift in Sources */,
+				CE9F0D022B21E51300387E3D /* Encodable+ExtensionTests.swift in Sources */,
+				CE9F0D042B21E62E00387E3D /* String+ExtensionTests.swift in Sources */,
 				CE9653B32B0B6EC4002027BA /* ListViewControllerTests.swift in Sources */,
 				CE9653D32B0B706E002027BA /* UsersTableViewCellTests.swift in Sources */,
 				CE9653D12B0B7055002027BA /* AddProductViewModelTests.swift in Sources */,

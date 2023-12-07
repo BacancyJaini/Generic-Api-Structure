@@ -21,7 +21,7 @@ extension String {
          //   print("decodedData == ", decodedData)
             return decodedData
         } catch {
-            print("parsing error ==", error)
+          //  print("parsing error ==", error)
             return nil
         }
     }
