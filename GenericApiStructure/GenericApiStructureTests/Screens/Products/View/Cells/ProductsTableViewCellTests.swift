@@ -9,39 +9,39 @@ import XCTest
 @testable import GenericApiStructure
 
 final class ProductsTableViewCellTests: XCTestCase {
-    private var cellUnderTest: ProductsTableViewCell!
+    private var sut: ProductsTableViewCell!
     
     override func setUp() {
         super.setUp()
-        cellUnderTest = Bundle.main.loadNibNamed("ProductsTableViewCell", owner: self, options: nil)?.first as? ProductsTableViewCell
-        cellUnderTest.product = "Product".loadJson(ofType: Product.self)
+        sut = Bundle.main.loadNibNamed("ProductsTableViewCell", owner: self, options: nil)?.first as? ProductsTableViewCell
+        sut.product = "Product".loadJson(ofType: Product.self)
     }
     
     override func tearDown() {
         super.tearDown()
-        cellUnderTest = nil
+        sut = nil
     }
     
     func testControllerNotNil() {
-        XCTAssertNotNil(cellUnderTest)
+        XCTAssertNotNil(sut)
     }
     
     func testOutletsNotNil() {
-        XCTAssertNotNil(cellUnderTest.productImageView)
-        XCTAssertNotNil(cellUnderTest.productBackgroundView)
-        XCTAssertNotNil(cellUnderTest.titleLabel)
-        XCTAssertNotNil(cellUnderTest.descriptionLabel)
-        XCTAssertNotNil(cellUnderTest.priceLabel)
-        XCTAssertNotNil(cellUnderTest.buyButton)
+        XCTAssertNotNil(sut.productImageView)
+        XCTAssertNotNil(sut.productBackgroundView)
+        XCTAssertNotNil(sut.titleLabel)
+        XCTAssertNotNil(sut.descriptionLabel)
+        XCTAssertNotNil(sut.priceLabel)
+        XCTAssertNotNil(sut.buyButton)
     }
     
     func testProductNotNil() {
-        XCTAssertNotNil(cellUnderTest.product)
+        XCTAssertNotNil(sut.product)
     }
      
     func testProductData() {
-        XCTAssertEqual(cellUnderTest.titleLabel.text, cellUnderTest.product?.title)
-        XCTAssertEqual(cellUnderTest.descriptionLabel.text, cellUnderTest.product?.description)
-        XCTAssertEqual(cellUnderTest.priceLabel.text, (cellUnderTest.product?.price ?? Constants.kZero).priceWithCurrency)
+        XCTAssertEqual(sut.titleLabel.text, sut.product?.title)
+        XCTAssertEqual(sut.descriptionLabel.text, sut.product?.description)
+        XCTAssertEqual(sut.priceLabel.text, (sut.product?.price ?? Constants.kZero).priceWithCurrency)
     }
 }

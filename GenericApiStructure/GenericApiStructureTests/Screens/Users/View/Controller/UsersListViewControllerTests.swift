@@ -9,73 +9,73 @@ import XCTest
 @testable import GenericApiStructure
 
 final class UsersListViewControllerTests: XCTestCase {
-    private var viewControllerUnderTest: UsersListViewController!
+    private var sut: UsersListViewController!
     private let iPath0 = IndexPath(row: 0, section: 0)
     
     override func setUp() {
         super.setUp()
-        viewControllerUnderTest = Storyboards.main.viewController(vc: UsersListViewController.self)
-        viewControllerUnderTest.serviceManager = MockServiceManager()
-        viewControllerUnderTest.loadViewIfNeeded()
-        viewControllerUnderTest.userViewModel?.users = ("AllUsers".loadJson(ofType: AllUsers.self))?.users ?? []
+        sut = Storyboards.main.viewController(vc: UsersListViewController.self)
+        sut.serviceManager = MockServiceManager()
+        sut.loadViewIfNeeded()
+        sut.userViewModel?.users = ("AllUsers".loadJson(ofType: AllUsers.self))?.users ?? []
     }
     
     override func tearDown() {
         super.tearDown()
-        viewControllerUnderTest = nil
+        sut = nil
     }
     
     func testControllerNotNil() {
-        XCTAssertNotNil(viewControllerUnderTest)
+        XCTAssertNotNil(sut)
     }
     
     func testNavTitle() {
-        XCTAssertEqual(viewControllerUnderTest.navigationItem.title, "User List")
+        XCTAssertEqual(sut.navigationItem.title, "User List")
     }
     
     func testOutletsNotNil() {
-        XCTAssertNotNil(viewControllerUnderTest.usersTableView)
-        XCTAssertNotNil(viewControllerUnderTest.usersSearchBar)
+        XCTAssertNotNil(sut.usersTableView)
+        XCTAssertNotNil(sut.usersSearchBar)
     }
     
     func testDelegateDatasource() {
-        XCTAssertTrue(viewControllerUnderTest.conforms(to: UITableViewDelegate.self))
-        XCTAssertTrue(viewControllerUnderTest.conforms(to: UITableViewDataSource.self))
-        XCTAssertTrue(viewControllerUnderTest.conforms(to: UISearchBarDelegate.self))
+        XCTAssertTrue(sut.conforms(to: UITableViewDelegate.self))
+        XCTAssertTrue(sut.conforms(to: UITableViewDataSource.self))
+        XCTAssertTrue(sut.conforms(to: UISearchBarDelegate.self))
     }
     
     func testAddProductIsCorrectlyAssigned() {
-        if let rightBarButtonItem = viewControllerUnderTest.navigationItem.rightBarButtonItem {
+        if let rightBarButtonItem = sut.navigationItem.rightBarButtonItem {
             XCTAssertNotNil(rightBarButtonItem.target)
-            XCTAssert(rightBarButtonItem.target === viewControllerUnderTest)
+            XCTAssert(rightBarButtonItem.target === sut)
         }
     }
     
     func testAddProductWithActionMethod() {
-        if let rightBarButtonItem = viewControllerUnderTest.navigationItem.rightBarButtonItem {
+        if let rightBarButtonItem = sut.navigationItem.rightBarButtonItem {
             XCTAssertTrue(rightBarButtonItem.action?.description == "addUserClick:")
         }
     }
     
     func testTableViewNumberOfRows() {
-        XCTAssertEqual(viewControllerUnderTest.tableView(viewControllerUnderTest.usersTableView, numberOfRowsInSection: 0), viewControllerUnderTest.userViewModel?.users.count)
+        XCTAssertEqual(sut.tableView(sut.usersTableView, numberOfRowsInSection: 0), sut.userViewModel?.users.count)
     }
     
     func testTableViewCellForRow() {
-        let cellRow0 = viewControllerUnderTest.tableView(viewControllerUnderTest.usersTableView, cellForRowAt: iPath0) as? UsersTableViewCell
+        let cellRow0 = sut.tableView(sut.usersTableView, cellForRowAt: iPath0) as? UsersTableViewCell
         
         XCTAssertEqual(cellRow0?.reuseIdentifier, "UsersTableViewCell")
     }
     
     func testTrailingSwipeActions() {
-        XCTAssertNotNil(viewControllerUnderTest.tableView(viewControllerUnderTest.usersTableView, trailingSwipeActionsConfigurationForRowAt: iPath0))
+        XCTAssertNotNil(sut.tableView(sut.usersTableView, trailingSwipeActionsConfigurationForRowAt: iPath0))
     }
     
     func testSearchBarDelegateMethods() {
-        XCTAssertNotNil(viewControllerUnderTest.searchBarSearchButtonClicked(viewControllerUnderTest.usersSearchBar))
-        XCTAssertNotNil(viewControllerUnderTest.searchBarCancelButtonClicked(viewControllerUnderTest.usersSearchBar))
-        XCTAssertNotNil(viewControllerUnderTest.searchBarTextDidBeginEditing(viewControllerUnderTest.usersSearchBar))
-        XCTAssertNotNil(viewControllerUnderTest.searchBarTextDidEndEditing(viewControllerUnderTest.usersSearchBar))
-        XCTAssertNotNil(viewControllerUnderTest.searchBar(viewControllerUnderTest.usersSearchBar, textDidChange: "test"))
+        XCTAssertNotNil(sut.searchBarSearchButtonClicked(sut.usersSearchBar))
+        XCTAssertNotNil(sut.searchBarCancelButtonClicked(sut.usersSearchBar))
+        XCTAssertNotNil(sut.searchBarTextDidBeginEditing(sut.usersSearchBar))
+        XCTAssertNotNil(sut.searchBarTextDidEndEditing(sut.usersSearchBar))
+        XCTAssertNotNil(sut.searchBar(sut.usersSearchBar, textDidChange: "test"))
     }
 }

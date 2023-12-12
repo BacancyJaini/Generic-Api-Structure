@@ -9,28 +9,28 @@ import XCTest
 @testable import GenericApiStructure
 
 final class AddUserViewModelTests: XCTestCase {
-    private var viewModelUnderTest: AddUserViewModel?
+    private var sut: AddUserViewModel?
 
     override func setUp() {
         super.setUp()
         let mockServiceManager = MockServiceManager()
-        viewModelUnderTest = AddUserViewModel(serviceManager: mockServiceManager)
+        sut = AddUserViewModel(serviceManager: mockServiceManager)
     }
     
     override func tearDown() {
         super.tearDown()
-        viewModelUnderTest = nil
+        sut = nil
     }
 
     func testInitialization() {
-        XCTAssertNotNil(viewModelUnderTest)
+        XCTAssertNotNil(sut)
     }
     
     func testFetchUser() {
         let expectation = self.expectation(description: "fetching a user")
         
         let model = 1.requestModel
-        viewModelUnderTest?.fetchUser(model: model)
+        sut?.fetchUser(model: model)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             expectation.fulfill()
         }
@@ -44,7 +44,7 @@ final class AddUserViewModelTests: XCTestCase {
         let requestModel = AddUpdateUser(firstName: "fname", lastName: "lname", age: 45)
         let type = UserEndPoint.addUser(model: requestModel)
         
-        viewModelUnderTest?.addOrUpdateUser(type: type)
+        sut?.addOrUpdateUser(type: type)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             expectation.fulfill()
         }

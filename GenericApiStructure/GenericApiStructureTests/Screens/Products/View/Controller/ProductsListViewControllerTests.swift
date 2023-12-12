@@ -9,73 +9,73 @@ import XCTest
 @testable import GenericApiStructure
 
 final class ProductsListViewControllerTests: XCTestCase {
-    private var viewControllerUnderTest: ProductsListViewController!
+    private var sut: ProductsListViewController!
     private let iPath0 = IndexPath(row: 0, section: 0)
-    
+        
     override func setUp() {
         super.setUp()
-        viewControllerUnderTest = Storyboards.main.viewController(vc: ProductsListViewController.self)
-        viewControllerUnderTest.serviceManager = MockServiceManager()
-        viewControllerUnderTest.loadViewIfNeeded()
-        viewControllerUnderTest.productViewModel?.products = ("AllProduct".loadJson(ofType: AllProducts.self))?.products ?? []
+        sut = Storyboards.main.viewController(vc: ProductsListViewController.self)
+        sut.serviceManager = MockServiceManager()
+        sut.loadViewIfNeeded()
+        sut.productViewModel?.products = ("AllProduct".loadJson(ofType: AllProducts.self))?.products ?? []
     }
     
     override func tearDown() {
         super.tearDown()
-        viewControllerUnderTest = nil
+        sut = nil
     }
     
     func testControllerNotNil() {
-        XCTAssertNotNil(viewControllerUnderTest)
+        XCTAssertNotNil(sut)
     }
     
     func testNavTitle() {
-        XCTAssertEqual(viewControllerUnderTest.navigationItem.title, "Product List")
+        XCTAssertEqual(sut.navigationItem.title, "Product List")
     }
     
     func testOutletsNotNil() {
-        XCTAssertNotNil(viewControllerUnderTest.productsTableView)
-        XCTAssertNotNil(viewControllerUnderTest.productsSearchBar)
+        XCTAssertNotNil(sut.productsTableView)
+        XCTAssertNotNil(sut.productsSearchBar)
     }
     
     func testDelegateDatasource() {
-        XCTAssertTrue(viewControllerUnderTest.conforms(to: UITableViewDelegate.self))
-        XCTAssertTrue(viewControllerUnderTest.conforms(to: UITableViewDataSource.self))
-        XCTAssertTrue(viewControllerUnderTest.conforms(to: UISearchBarDelegate.self))
+        XCTAssertTrue(sut.conforms(to: UITableViewDelegate.self))
+        XCTAssertTrue(sut.conforms(to: UITableViewDataSource.self))
+        XCTAssertTrue(sut.conforms(to: UISearchBarDelegate.self))
     }
     
     func testAddProductIsCorrectlyAssigned() {
-        if let rightBarButtonItem = viewControllerUnderTest.navigationItem.rightBarButtonItem {
+        if let rightBarButtonItem = sut.navigationItem.rightBarButtonItem {
             XCTAssertNotNil(rightBarButtonItem.target)
-            XCTAssert(rightBarButtonItem.target === viewControllerUnderTest)
+            XCTAssert(rightBarButtonItem.target === sut)
         }
     }
     
     func testAddProductWithActionMethod() {
-        if let rightBarButtonItem = viewControllerUnderTest.navigationItem.rightBarButtonItem {
+        if let rightBarButtonItem = sut.navigationItem.rightBarButtonItem {
             XCTAssertTrue(rightBarButtonItem.action?.description == "addProductClick:")
         }
     }
     
     func testTableViewNumberOfRows() {
-        XCTAssertEqual(viewControllerUnderTest.tableView(viewControllerUnderTest.productsTableView, numberOfRowsInSection: 0), viewControllerUnderTest.productViewModel?.products.count)
+        XCTAssertEqual(sut.tableView(sut.productsTableView, numberOfRowsInSection: 0), sut.productViewModel?.products.count)
     }
     
     func testTableViewCellForRow() {
-        let cellRow0 = viewControllerUnderTest.tableView(viewControllerUnderTest.productsTableView, cellForRowAt: iPath0) as? ProductsTableViewCell
+        let cellRow0 = sut.tableView(sut.productsTableView, cellForRowAt: iPath0) as? ProductsTableViewCell
         
         XCTAssertEqual(cellRow0?.reuseIdentifier, "ProductsTableViewCell")
     }
     
     func testTrailingSwipeActions() {
-        XCTAssertNotNil(viewControllerUnderTest.tableView(viewControllerUnderTest.productsTableView, trailingSwipeActionsConfigurationForRowAt: iPath0))
+        XCTAssertNotNil(sut.tableView(sut.productsTableView, trailingSwipeActionsConfigurationForRowAt: iPath0))
     }
     
     func testSearchBarDelegateMethods() {
-        XCTAssertNotNil(viewControllerUnderTest.searchBarSearchButtonClicked(viewControllerUnderTest.productsSearchBar))
-        XCTAssertNotNil(viewControllerUnderTest.searchBarCancelButtonClicked(viewControllerUnderTest.productsSearchBar))
-        XCTAssertNotNil(viewControllerUnderTest.searchBarTextDidBeginEditing(viewControllerUnderTest.productsSearchBar))
-        XCTAssertNotNil(viewControllerUnderTest.searchBarTextDidEndEditing(viewControllerUnderTest.productsSearchBar))
-        XCTAssertNotNil(viewControllerUnderTest.searchBar(viewControllerUnderTest.productsSearchBar, textDidChange: "test"))
+        XCTAssertNotNil(sut.searchBarSearchButtonClicked(sut.productsSearchBar))
+        XCTAssertNotNil(sut.searchBarCancelButtonClicked(sut.productsSearchBar))
+        XCTAssertNotNil(sut.searchBarTextDidBeginEditing(sut.productsSearchBar))
+        XCTAssertNotNil(sut.searchBarTextDidEndEditing(sut.productsSearchBar))
+        XCTAssertNotNil(sut.searchBar(sut.productsSearchBar, textDidChange: "test"))
     }
 }

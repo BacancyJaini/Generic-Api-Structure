@@ -10,28 +10,28 @@ import XCTest
 
 final class NoDataTableViewCellTests: XCTestCase {
 
-    private var cellUnderTest: NoDataTableViewCell!
+    private var sut: NoDataTableViewCell!
     
     override func setUp() {
         super.setUp()
-        cellUnderTest = Bundle.main.loadNibNamed("NoDataTableViewCell", owner: self, options: nil)?.first as? NoDataTableViewCell
-        cellUnderTest.noData = Constants.kNoData
+        sut = Bundle.main.loadNibNamed("NoDataTableViewCell", owner: self, options: nil)?.first as? NoDataTableViewCell
+        sut.noData = Constants.kNoData
     }
     
     override func tearDown() {
         super.tearDown()
-        cellUnderTest = nil
+        sut = nil
     }
     
     func testControllerNotNil() {
-        XCTAssertNotNil(cellUnderTest)
+        XCTAssertNotNil(sut)
     }
     
     func testOutletsNotNil() {
-        XCTAssertNotNil(cellUnderTest.noDataLabel)
+        XCTAssertNotNil(sut.noDataLabel)
     }
     
     func testNoDataTitle() {
-        XCTAssertEqual(cellUnderTest.noDataLabel.text, Constants.kNoData)
+        XCTAssertEqual(sut.noDataLabel.text, Constants.kNoData)
     }
 }

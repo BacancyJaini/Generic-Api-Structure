@@ -9,61 +9,61 @@ import XCTest
 @testable import GenericApiStructure
 
 final class AddUserViewControllerTests: XCTestCase {
-    private var viewControllerUnderTest: AddUserViewController!
+    private var sut: AddUserViewController!
     
     override func setUp() {
         super.setUp()
-        viewControllerUnderTest = Storyboards.main.viewController(vc: AddUserViewController.self)
-        viewControllerUnderTest.user = "User".loadJson(ofType: User.self)
-        viewControllerUnderTest.loadViewIfNeeded()
-        viewControllerUnderTest.addUserViewModel = AddUserViewModel(serviceManager: MockServiceManager())
+        sut = Storyboards.main.viewController(vc: AddUserViewController.self)
+        sut.user = "User".loadJson(ofType: User.self)
+        sut.loadViewIfNeeded()
+        sut.addUserViewModel = AddUserViewModel(serviceManager: MockServiceManager())
     }
     
     override func tearDown() {
         super.tearDown()
-        viewControllerUnderTest = nil
+        sut = nil
     }
     
     func testControllerNotNil() {
-        XCTAssertNotNil(viewControllerUnderTest)
+        XCTAssertNotNil(sut)
     }
     
     func testNavTitle() {
-        XCTAssertEqual(viewControllerUnderTest.navigationItem.title, Constants.kUpdateHeader)
+        XCTAssertEqual(sut.navigationItem.title, Constants.kUpdateHeader)
     }
     
     func testOutletsNotNil() {
-        XCTAssertNotNil(viewControllerUnderTest.userImageView)
-        XCTAssertNotNil(viewControllerUnderTest.firstNameTextField)
-        XCTAssertNotNil(viewControllerUnderTest.lastNameTextField)
-        XCTAssertNotNil(viewControllerUnderTest.ageTextField)
-        XCTAssertNotNil(viewControllerUnderTest.addUpdateButton)
+        XCTAssertNotNil(sut.userImageView)
+        XCTAssertNotNil(sut.firstNameTextField)
+        XCTAssertNotNil(sut.lastNameTextField)
+        XCTAssertNotNil(sut.ageTextField)
+        XCTAssertNotNil(sut.addUpdateButton)
     }
     
     func testDelegate() {
-        XCTAssertTrue(viewControllerUnderTest.conforms(to: UITextFieldDelegate.self))
+        XCTAssertTrue(sut.conforms(to: UITextFieldDelegate.self))
     }
     
     func testUpdateData() {
-        XCTAssertEqual(viewControllerUnderTest.addUpdateButton.currentTitle, Constants.kUpdateButton)
-        XCTAssertEqual(viewControllerUnderTest.firstNameTextField.text, viewControllerUnderTest.user?.firstName)
-        XCTAssertEqual(viewControllerUnderTest.lastNameTextField.text, viewControllerUnderTest.user?.lastName)
-        XCTAssertEqual(viewControllerUnderTest.ageTextField.text, "\(viewControllerUnderTest.user?.age ?? Constants.kZero)")
+        XCTAssertEqual(sut.addUpdateButton.currentTitle, Constants.kUpdateButton)
+        XCTAssertEqual(sut.firstNameTextField.text, sut.user?.firstName)
+        XCTAssertEqual(sut.lastNameTextField.text, sut.user?.lastName)
+        XCTAssertEqual(sut.ageTextField.text, "\(sut.user?.age ?? Constants.kZero)")
     }
     
     func testRequestModel() {
-        let requestModel = viewControllerUnderTest.getRequestModel()
+        let requestModel = sut.getRequestModel()
         XCTAssertNotNil(requestModel)
     }
     
     func testButtonAction() {
-        viewControllerUnderTest.addUpdateButton.sendActions(for: .touchUpInside)
-        XCTAssertNotNil(viewControllerUnderTest.addUpdateButton.actions(forTarget: viewControllerUnderTest, forControlEvent: .touchUpInside))
+        sut.addUpdateButton.sendActions(for: .touchUpInside)
+        XCTAssertNotNil(sut.addUpdateButton.actions(forTarget: sut, forControlEvent: .touchUpInside))
     }
     
     func testTextFieldShouldReturn() {
-        XCTAssertNotNil(viewControllerUnderTest.textFieldShouldReturn(viewControllerUnderTest.firstNameTextField))
-        XCTAssertNotNil(viewControllerUnderTest.textFieldShouldReturn(viewControllerUnderTest.lastNameTextField))
-        XCTAssertNotNil(viewControllerUnderTest.textFieldShouldReturn(viewControllerUnderTest.ageTextField))
+        XCTAssertNotNil(sut.textFieldShouldReturn(sut.firstNameTextField))
+        XCTAssertNotNil(sut.textFieldShouldReturn(sut.lastNameTextField))
+        XCTAssertNotNil(sut.textFieldShouldReturn(sut.ageTextField))
     }
 }

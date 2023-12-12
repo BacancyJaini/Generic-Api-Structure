@@ -9,46 +9,46 @@ import XCTest
 @testable import GenericApiStructure
 
 class ListViewControllerTests: XCTestCase {
-    private var viewControllerUnderTest: ListViewController!
+    private var sut: ListViewController!
     
     override func setUp() {
         super.setUp()
-        viewControllerUnderTest = Storyboards.main.viewController(vc: ListViewController.self)
-        viewControllerUnderTest.loadViewIfNeeded()
+        sut = Storyboards.main.viewController(vc: ListViewController.self)
+        sut.loadViewIfNeeded()
     }
     
     override func tearDown() {
         super.tearDown()
-        viewControllerUnderTest = nil
+        sut = nil
     }
     
     func testControllerNotNil() {
-        XCTAssertNotNil(viewControllerUnderTest)
+        XCTAssertNotNil(sut)
     }
     
     func testOutletsNotNil() {
-        XCTAssertNotNil(viewControllerUnderTest.listTableView)
+        XCTAssertNotNil(sut.listTableView)
     }
     
     func testNavTitle() {
-        XCTAssertEqual(viewControllerUnderTest.navigationItem.title, "Item List")
+        XCTAssertEqual(sut.navigationItem.title, "Item List")
     }
     
     func testDelegateDatasource() {
-        XCTAssertTrue(viewControllerUnderTest.conforms(to: UITableViewDelegate.self))
-        XCTAssertTrue(viewControllerUnderTest.conforms(to: UITableViewDataSource.self))
+        XCTAssertTrue(sut.conforms(to: UITableViewDelegate.self))
+        XCTAssertTrue(sut.conforms(to: UITableViewDataSource.self))
     }
     
     func testTableViewNumberOfRows() {
-        XCTAssertEqual(viewControllerUnderTest.tableView(viewControllerUnderTest.listTableView, numberOfRowsInSection: 0), Constants.listItems.count)
+        XCTAssertEqual(sut.tableView(sut.listTableView, numberOfRowsInSection: 0), Constants.listItems.count)
     }
     
     func testTableViewCellForRow() {
         let iPath0 = IndexPath(row: 0, section: 0)
-        let cellRow0 = viewControllerUnderTest.tableView(viewControllerUnderTest.listTableView, cellForRowAt: iPath0)
+        let cellRow0 = sut.tableView(sut.listTableView, cellForRowAt: iPath0)
         
         let iPath1 = IndexPath(row: 1, section: 0)
-        let cellRow1 = viewControllerUnderTest.tableView(viewControllerUnderTest.listTableView, cellForRowAt: iPath1)
+        let cellRow1 = sut.tableView(sut.listTableView, cellForRowAt: iPath1)
         
         XCTAssertEqual(cellRow0.reuseIdentifier, "cell")
         XCTAssertEqual(cellRow0.textLabel?.text, Constants.listItems[iPath0.row])
@@ -57,6 +57,6 @@ class ListViewControllerTests: XCTestCase {
     
     func testTableViewDidSelectRow() {
         let iPath = IndexPath(row: 0, section: 0)
-        XCTAssertNotNil(viewControllerUnderTest.tableView(viewControllerUnderTest.listTableView, didSelectRowAt: iPath))
+        XCTAssertNotNil(sut.tableView(sut.listTableView, didSelectRowAt: iPath))
     }
 }

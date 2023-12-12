@@ -9,31 +9,31 @@ import XCTest
 @testable import GenericApiStructure
 
 final class ProductViewModelTests: XCTestCase {
-    private var viewModelUnderTest: ProductViewModel?
+    private var sut: ProductViewModel?
 
     override func setUp() {
         super.setUp()
         let mockServiceManager = MockServiceManager()
-        viewModelUnderTest = ProductViewModel(serviceManager: mockServiceManager)
+        sut = ProductViewModel(serviceManager: mockServiceManager)
     }
     
     override func tearDown() {
         super.tearDown()
-        viewModelUnderTest = nil
+        sut = nil
     }
 
     func testInitialization() {
-        XCTAssertNotNil(viewModelUnderTest)
+        XCTAssertNotNil(sut)
     }
     
     func testFetchProducts() {
         let expectation = self.expectation(description: "fetching products")
         
-        viewModelUnderTest?.fetchProducts()
+        sut?.fetchProducts()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             guard let self else { return }
             expectation.fulfill()
-            XCTAssertTrue(viewModelUnderTest?.products.count ?? 0 > 0)
+            XCTAssertTrue(sut?.products.count ?? 0 > 0)
         }
         
         waitForExpectations(timeout: 1, handler: nil)
@@ -43,7 +43,7 @@ final class ProductViewModelTests: XCTestCase {
         let expectation = self.expectation(description: "deleting product")
         
         let model = 1.requestModel
-        viewModelUnderTest?.deleteProduct(model: model, index: 0)
+        sut?.deleteProduct(model: model, index: 0)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             expectation.fulfill()
@@ -55,11 +55,11 @@ final class ProductViewModelTests: XCTestCase {
     func testSearchProducts() {
         let expectation = self.expectation(description: "searching products")
         let model = SearchData(q: "iPhone")
-        viewModelUnderTest?.searchProducts(model: model)
+        sut?.searchProducts(model: model)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             guard let self else { return }
-            XCTAssertTrue(viewModelUnderTest?.products.count ?? 0 > 0)
+            XCTAssertTrue(sut?.products.count ?? 0 > 0)
             expectation.fulfill()
         }
         

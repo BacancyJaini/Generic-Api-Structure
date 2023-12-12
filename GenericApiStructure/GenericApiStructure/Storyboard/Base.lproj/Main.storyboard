@@ -87,7 +87,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="productsSearchBar" destination="aof-Xg-8E4" id="wk4-Z8-VB2"/>
+                        <outlet property="productsSearchBar" destination="aof-Xg-8E4" id="R35-Af-GDZ"/>
                         <outlet property="productsTableView" destination="6m6-lz-m1g" id="d9v-mU-BTU"/>
                     </connections>
                 </viewController>

@@ -9,36 +9,36 @@ import XCTest
 @testable import GenericApiStructure
 
 final class UsersTableViewCellTests: XCTestCase {
-    private var cellUnderTest: UsersTableViewCell!
+    private var sut: UsersTableViewCell!
     
     override func setUp() {
         super.setUp()
-        cellUnderTest = Bundle.main.loadNibNamed("UsersTableViewCell", owner: self, options: nil)?.first as? UsersTableViewCell
-        cellUnderTest.user = "User".loadJson(ofType: User.self)
+        sut = Bundle.main.loadNibNamed("UsersTableViewCell", owner: self, options: nil)?.first as? UsersTableViewCell
+        sut.user = "User".loadJson(ofType: User.self)
     }
     
     override func tearDown() {
         super.tearDown()
-        cellUnderTest = nil
+        sut = nil
     }
     
     func testControllerNotNil() {
-        XCTAssertNotNil(cellUnderTest)
+        XCTAssertNotNil(sut)
     }
     
     func testOutletsNotNil() {
-        XCTAssertNotNil(cellUnderTest.userImageView)
-        XCTAssertNotNil(cellUnderTest.userBackgroundView)
-        XCTAssertNotNil(cellUnderTest.firstLastNameLabel)
-        XCTAssertNotNil(cellUnderTest.usernameLabel)
+        XCTAssertNotNil(sut.userImageView)
+        XCTAssertNotNil(sut.userBackgroundView)
+        XCTAssertNotNil(sut.firstLastNameLabel)
+        XCTAssertNotNil(sut.usernameLabel)
     }
     
     func testUserNotNil() {
-        XCTAssertNotNil(cellUnderTest.user)
+        XCTAssertNotNil(sut.user)
     }
      
     func testUserData() {
-        XCTAssertEqual(cellUnderTest.firstLastNameLabel.text, "\(cellUnderTest.user?.firstName ?? Constants.kEmpty) \(cellUnderTest.user?.lastName ?? Constants.kEmpty)")
-        XCTAssertEqual(cellUnderTest.usernameLabel.text, cellUnderTest.user?.username)
+        XCTAssertEqual(sut.firstLastNameLabel.text, "\(sut.user?.firstName ?? Constants.kEmpty) \(sut.user?.lastName ?? Constants.kEmpty)")
+        XCTAssertEqual(sut.usernameLabel.text, sut.user?.username)
     }
 }
