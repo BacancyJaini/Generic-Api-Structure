@@ -18,10 +18,8 @@ extension String {
                 return nil
             }
             let decodedData = try JSONDecoder().decode(ofType.self, from: jsonData)
-         //   print("decodedData == ", decodedData)
             return decodedData
         } catch {
-          //  print("parsing error ==", error)
             return nil
         }
     }
