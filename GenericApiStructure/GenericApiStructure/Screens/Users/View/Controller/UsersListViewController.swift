@@ -9,8 +9,8 @@ import UIKit
 
 class UsersListViewController: UIViewController {
     // MARK: - IBOutlets
-    @IBOutlet private weak var usersTableView: UITableView!
-    @IBOutlet private weak var usersSearchBar: UISearchBar!
+    @IBOutlet weak var usersTableView: UITableView!
+    @IBOutlet weak var usersSearchBar: UISearchBar!
     
     // MARK: - Variables
     var userViewModel: UserViewModel!

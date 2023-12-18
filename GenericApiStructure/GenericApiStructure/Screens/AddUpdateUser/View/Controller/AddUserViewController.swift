@@ -11,11 +11,11 @@ import Combine
 class AddUserViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet private weak var userImageView: UIImageView!
-    @IBOutlet private weak var firstNameTextField: UITextField!
-    @IBOutlet private weak var lastNameTextField: UITextField!
-    @IBOutlet private weak var ageTextField: UITextField!
-    @IBOutlet private weak var addUpdateButton: UIButton!
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var addUpdateButton: UIButton!
     
     // MARK: - Variables
     var addUpdateUserHandler: ((_ user: User, _ isAddUser: Bool) -> Void)?

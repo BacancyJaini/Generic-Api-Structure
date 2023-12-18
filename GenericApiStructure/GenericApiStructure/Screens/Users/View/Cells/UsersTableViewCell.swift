@@ -10,10 +10,10 @@ import UIKit
 class UsersTableViewCell: UITableViewCell {
 
     // MARK: - IBOutlets
-    @IBOutlet private weak var userImageView: UIImageView!
-    @IBOutlet private weak var userBackgroundView: UIView!
-    @IBOutlet private weak var firstLastNameLabel: UILabel!
-    @IBOutlet private weak var usernameLabel: UILabel!
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userBackgroundView: UIView!
+    @IBOutlet weak var firstLastNameLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     // MARK: - Variables
     var user: User? {

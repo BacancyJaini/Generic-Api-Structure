@@ -10,8 +10,8 @@ import UIKit
 class ProductsListViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet private weak var productsTableView: UITableView!
-    @IBOutlet private weak var productsSearchBar: UISearchBar!
+    @IBOutlet weak var productsTableView: UITableView!
+    @IBOutlet weak var productsSearchBar: UISearchBar!
     
     // MARK: - Variables
     var productViewModel: ProductViewModel!

@@ -9,7 +9,7 @@ import UIKit
 
 class ListViewController: UIViewController {
     // MARK: - IBOutlets
-    @IBOutlet private weak var listTableView: UITableView!
+    @IBOutlet weak var listTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -11,10 +11,10 @@ import Combine
 class AddProductViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet private weak var productImageView: UIImageView!
-    @IBOutlet private weak var titleTextField: UITextField!
-    @IBOutlet private weak var descriptionTextField: UITextField!
-    @IBOutlet private weak var addUpdateButton: UIButton!
+    @IBOutlet weak var productImageView: UIImageView!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var addUpdateButton: UIButton!
     
     // MARK: - Variables
     var addUpdateProductHandler: ((_ product: Product, _ isAddProduct: Bool) -> Void)?
