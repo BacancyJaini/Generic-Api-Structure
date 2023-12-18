@@ -57,12 +57,6 @@ final class AddUserViewModel {
 }
 
 extension AddUserViewModel {
-    func isValidData(model: AddUpdateUser) -> Bool {
-        return !model.firstName.isEmpty && !model.lastName.isEmpty && model.age > 0.0
-    }
-}
-
-extension AddUserViewModel {
     enum Event {
         case loading
         case stopLoading

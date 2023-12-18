@@ -14,7 +14,7 @@ struct AllProducts: Codable {
 
 struct Product: Codable {
     let id: Int
-    let title, description: String
+    var title, description: String
     let price: Int?
     let discountPercentage, rating: Double?
     let stock: Int?

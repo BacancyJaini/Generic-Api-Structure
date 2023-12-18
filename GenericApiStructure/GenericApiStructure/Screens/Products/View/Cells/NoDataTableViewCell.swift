@@ -10,7 +10,7 @@ import UIKit
 class NoDataTableViewCell: UITableViewCell {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var noDataLabel: UILabel!
+    @IBOutlet private weak var noDataLabel: UILabel!
     
     // MARK: - Variables
     var noData = Constants.kEmpty {

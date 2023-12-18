@@ -6,22 +6,34 @@
 //
 
 import UIKit
+import Combine
 
 class AddProductViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var productImageView: UIImageView!
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var descriptionTextField: UITextField!
-    @IBOutlet weak var addUpdateButton: UIButton!
+    @IBOutlet private weak var productImageView: UIImageView!
+    @IBOutlet private weak var titleTextField: UITextField!
+    @IBOutlet private weak var descriptionTextField: UITextField!
+    @IBOutlet private weak var addUpdateButton: UIButton!
     
     // MARK: - Variables
     var addUpdateProductHandler: ((_ product: Product, _ isAddProduct: Bool) -> Void)?
     var product: Product?
+    @Published private var productTitle = ""
+    @Published private var productDescription = ""
+    private var subscriptions: Set<AnyCancellable> = Set<AnyCancellable>()
     var addProductViewModel = AddProductViewModel(serviceManager: ServiceManager())
     private lazy var isAddNewProduct: Bool = {
         return product?.id == nil
     }()
+    
+    private var isSubmitButtonEnabledPublisher: AnyPublisher<Bool, Never> {
+        return Publishers.CombineLatest($productTitle, $productDescription)
+            .map { productTitle, productDescription in
+                !productTitle.isEmpty && !productDescription.isEmpty
+            }
+            .eraseToAnyPublisher()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +44,11 @@ class AddProductViewController: UIViewController {
 
 extension AddProductViewController {
     private func initialConfiguration() {
+        isSubmitButtonEnabledPublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.isEnabled, on: addUpdateButton)
+            .store(in: &subscriptions)
+        
         productImageView.setCornerRadius(radius: productImageView.frame.size.height / 2)
       //  initViewModel()
         setupUpdateUi()
@@ -44,7 +61,9 @@ extension AddProductViewController {
             addUpdateButton.setTitle(Constants.kUpdateButton, for: .normal)
             productImageView.setImage(with: product?.thumbnail ?? Constants.kEmpty)
             titleTextField.text = product?.title
+            productTitle = product?.title ?? Constants.kEmpty
             descriptionTextField.text = product?.description
+            productDescription = product?.description ?? Constants.kEmpty
         }
     }
     
@@ -90,12 +109,23 @@ extension AddProductViewController {
 
 // MARK: - Action
 extension AddProductViewController {
-    @IBAction func addUpdateProductClick(_ sender: Any) {
+    @IBAction private func addUpdateProductClick(_ sender: Any) {
         let requestModel = getRequestModel()
         
-        if (addProductViewModel.isValidData(model: requestModel)) {
-            let type = isAddNewProduct ? ProductEndPoint.addProduct(model: requestModel) : ProductEndPoint.updateProduct(model: requestModel)
-            addProductViewModel.addOrUpdateProduct(type: type)
+        let type = isAddNewProduct ? ProductEndPoint.addProduct(model: requestModel) : ProductEndPoint.updateProduct(model: requestModel)
+        addProductViewModel.addOrUpdateProduct(type: type)
+    }
+    
+    @IBAction private func textFieldTextDidChange(_ sender: UITextField) {
+        switch sender.tag {
+        case 100: 
+            productTitle = sender.text ?? Constants.kEmpty
+            break
+        case 200: 
+            productDescription = sender.text ?? Constants.kEmpty
+            break
+        default:
+            break
         }
     }
 }

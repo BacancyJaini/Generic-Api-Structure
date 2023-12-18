@@ -10,12 +10,12 @@ import UIKit
 class ProductsTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var productImageView: UIImageView!
-    @IBOutlet weak var productBackgroundView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet private weak var productImageView: UIImageView!
+    @IBOutlet private weak var productBackgroundView: UIView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var buyButton: UIButton!
     
     // MARK: - Variables
     var product: Product? {

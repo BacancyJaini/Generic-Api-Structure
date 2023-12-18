@@ -10,8 +10,8 @@ import UIKit
 class ProductsListViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var productsTableView: UITableView!
-    @IBOutlet weak var productsSearchBar: UISearchBar!
+    @IBOutlet private weak var productsTableView: UITableView!
+    @IBOutlet private weak var productsSearchBar: UISearchBar!
     
     // MARK: - Variables
     var productViewModel: ProductViewModel!
@@ -73,7 +73,7 @@ extension ProductsListViewController {
 
 // MARK: - Action
 extension ProductsListViewController {
-    @IBAction func addProductClick(_ sender: Any) {
+    @IBAction private func addProductClick(_ sender: Any) {
         let vc = Storyboards.main.viewController(vc: AddProductViewController.self)
         vc.addUpdateProductHandler = { (product, isAddProduct) in
             // add to array

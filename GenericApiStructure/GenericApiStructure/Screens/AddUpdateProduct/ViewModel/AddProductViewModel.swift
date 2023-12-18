@@ -57,12 +57,6 @@ final class AddProductViewModel {
 }
 
 extension AddProductViewModel {
-    func isValidData(model: AddUpdateProduct) -> Bool {
-        return !model.title.isEmpty && !model.description.isEmpty
-    }
-}
-
-extension AddProductViewModel {
     enum Event {
         case loading
         case stopLoading

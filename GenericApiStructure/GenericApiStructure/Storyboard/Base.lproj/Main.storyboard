@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iLq-Nf-cPg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iLq-Nf-cPg">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -119,25 +119,27 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="7Z4-Dp-9z8">
                                                 <rect key="frame" x="16" y="183" width="361" height="84"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vXz-hx-nCj">
+                                                    <textField opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vXz-hx-nCj">
                                                         <rect key="frame" x="0.0" y="0.0" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="igp-BN-hVo" id="IMy-To-KmG"/>
+                                                            <action selector="textFieldTextDidChange:" destination="igp-BN-hVo" eventType="editingChanged" id="nw8-hl-xY1"/>
+                                                            <outlet property="delegate" destination="igp-BN-hVo" id="qwn-N1-7vT"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kx1-wm-TZY">
+                                                    <textField opaque="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kx1-wm-TZY">
                                                         <rect key="frame" x="0.0" y="50" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="igp-BN-hVo" id="464-pT-vVh"/>
+                                                            <action selector="textFieldTextDidChange:" destination="igp-BN-hVo" eventType="editingChanged" id="bHn-ca-ezt"/>
+                                                            <outlet property="delegate" destination="igp-BN-hVo" id="Ck6-h7-ZDB"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvM-ht-Nqu">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvM-ht-Nqu">
                                                 <rect key="frame" x="32" y="302" width="329" height="34.333333333333314"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Add" cornerStyle="small"/>
@@ -183,9 +185,9 @@
                     <navigationItem key="navigationItem" title="Add Product" id="QIK-ah-SCr"/>
                     <connections>
                         <outlet property="addUpdateButton" destination="mvM-ht-Nqu" id="dE3-1J-Fkv"/>
-                        <outlet property="descriptionTextField" destination="kx1-wm-TZY" id="VjG-Vm-fw7"/>
+                        <outlet property="descriptionTextField" destination="kx1-wm-TZY" id="Bcz-bK-I79"/>
                         <outlet property="productImageView" destination="gLC-ZX-GMM" id="aij-I6-SJz"/>
-                        <outlet property="titleTextField" destination="vXz-hx-nCj" id="yEe-vz-Q4P"/>
+                        <outlet property="titleTextField" destination="vXz-hx-nCj" id="9gi-z5-vdZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lhB-1W-iy7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -216,33 +218,36 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="8WU-NU-7Yn">
                                                 <rect key="frame" x="16" y="183" width="361" height="134"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y67-KE-4EG">
+                                                    <textField opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y67-KE-4EG">
                                                         <rect key="frame" x="0.0" y="0.0" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
+                                                            <action selector="textFieldTextDidChange:" destination="iNq-tp-Wla" eventType="editingChanged" id="eqf-rZ-pKX"/>
                                                             <outlet property="delegate" destination="iNq-tp-Wla" id="FPE-q1-2Q7"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDU-c6-uSP">
+                                                    <textField opaque="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDU-c6-uSP">
                                                         <rect key="frame" x="0.0" y="50" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
+                                                            <action selector="textFieldTextDidChange:" destination="iNq-tp-Wla" eventType="editingChanged" id="1Kp-A3-Aaa"/>
                                                             <outlet property="delegate" destination="iNq-tp-Wla" id="KiH-rH-xwN"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yle-Rd-tmq">
+                                                    <textField opaque="NO" tag="300" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yle-Rd-tmq">
                                                         <rect key="frame" x="0.0" y="100" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <connections>
+                                                            <action selector="textFieldTextDidChange:" destination="iNq-tp-Wla" eventType="editingChanged" id="4NY-jZ-Ho0"/>
                                                             <outlet property="delegate" destination="iNq-tp-Wla" id="XLl-WI-Dq1"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEN-Fm-sOF">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEN-Fm-sOF">
                                                 <rect key="frame" x="32" y="352" width="329" height="34.333333333333314"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Add" cornerStyle="small"/>

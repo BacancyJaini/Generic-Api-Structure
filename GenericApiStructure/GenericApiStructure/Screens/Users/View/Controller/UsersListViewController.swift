@@ -9,8 +9,8 @@ import UIKit
 
 class UsersListViewController: UIViewController {
     // MARK: - IBOutlets
-    @IBOutlet weak var usersTableView: UITableView!
-    @IBOutlet weak var usersSearchBar: UISearchBar!
+    @IBOutlet private weak var usersTableView: UITableView!
+    @IBOutlet private weak var usersSearchBar: UISearchBar!
     
     // MARK: - Variables
     var userViewModel: UserViewModel!
@@ -72,7 +72,7 @@ extension UsersListViewController {
 
 // MARK: - Action
 extension UsersListViewController {
-    @IBAction func addUserClick(_ sender: Any) {
+    @IBAction private func addUserClick(_ sender: Any) {
         let vc = Storyboards.main.viewController(vc: AddUserViewController.self)
         vc.addUpdateUserHandler = { (user, isAddUser) in
             // add to array
