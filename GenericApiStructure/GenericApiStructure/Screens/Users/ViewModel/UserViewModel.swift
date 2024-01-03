@@ -11,25 +11,25 @@ import Combine
 final class UserViewModel {
     var initialUsersData: [User] = []
     var users: [User] = []
-    var eventHandler: ((_ event: Event) -> Void)? // Data Binding Closure
     var serviceManager: ServiceManagerProtocol?
     var isApiResponseCame = false
     private var cancellables = Set<AnyCancellable>()
+    @Published private(set) var state: Event = .loading
     
     init(serviceManager: ServiceManagerProtocol) {
         self.serviceManager = serviceManager
     }
     
     func fetchUsers() {
-        self.eventHandler?(.loading)
+        state = .loading
         serviceManager?.fetchUsers(type: UserEndPoint.users)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self else { return }
-                self.eventHandler?(.stopLoading)
+                state = .stopLoading
                 self.isApiResponseCame = true
                 switch completion {
                 case .failure(let error):
-                    self.eventHandler?(.error(error))
+                    state = .error(error)
                 case .finished:
                     print("Finished")
                 }
@@ -37,20 +37,20 @@ final class UserViewModel {
                 guard let self else { return }
                 self.initialUsersData = allUsers.users
                 self.users = allUsers.users
-                self.eventHandler?(.dataLoaded)
+                state = .dataLoaded
             })
             .store(in: &cancellables)
     }
     
     func deleteUser(model: DataRequestModel, index: Int) {
-        self.eventHandler?(.loading)
+        state = .loading
         serviceManager?.deleteUser(type: UserEndPoint.deleteUser(model: model))
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self else { return }
-                self.eventHandler?(.stopLoading)
+                state = .stopLoading
                 switch completion {
                 case .failure(let error):
-                    self.eventHandler?(.error(error))
+                    state = .error(error)
                 case .finished:
                     print("Finished")
                 }
@@ -58,28 +58,28 @@ final class UserViewModel {
                 guard let self else { return }
                 if self.users.count > index {
                     self.users.remove(at: index)
-                    self.eventHandler?(.userDeleted)
+                    state = .userDeleted
                 }
             })
             .store(in: &cancellables)
     }
     
     func searchUsers(model: SearchData) {
-        self.eventHandler?(.loading)
+        state = .loading
         serviceManager?.searchUsers(type: UserEndPoint.searchUser(model: model))
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self else { return }
-                self.eventHandler?(.stopLoading)
+                state = .stopLoading
                 switch completion {
                 case .failure(let error):
-                    self.eventHandler?(.error(error))
+                    state = .error(error)
                 case .finished:
                     print("Finished")
                 }
             }, receiveValue: { [weak self] allUsers in
                 guard let self else { return }
                 self.users = allUsers.users
-                self.eventHandler?(.productSearched)
+                state = .userSearched
             })
             .store(in: &cancellables)
     }
@@ -92,6 +92,6 @@ extension UserViewModel {
         case dataLoaded
         case error(Error?)
         case userDeleted
-        case productSearched
+        case userSearched
     }
 }

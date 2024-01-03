@@ -11,25 +11,26 @@ import Combine
 final class ProductViewModel {
     var initialProductsData: [Product] = []
     var products: [Product] = []
-    var eventHandler: ((_ event: Event) -> Void)? // Data Binding Closure
     var serviceManager: ServiceManagerProtocol?
     var isApiResponseCame = false
     private var cancellables = Set<AnyCancellable>()
+    
+    @Published private(set) var state: Event = .loading
     
     init(serviceManager: ServiceManagerProtocol) {
         self.serviceManager = serviceManager
     }
     
     func fetchProducts() {
-        self.eventHandler?(.loading)
+        state = .loading
         serviceManager?.fetchProducts(type: ProductEndPoint.products)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self else { return }
-                self.eventHandler?(.stopLoading)
+                state = .stopLoading
                 self.isApiResponseCame = true
                 switch completion {
                 case .failure(let error):
-                    self.eventHandler?(.error(error))
+                    state = .error(error)
                 case .finished:
                     print("Finished")
                 }
@@ -37,20 +38,20 @@ final class ProductViewModel {
                 guard let self else { return }
                 self.initialProductsData = allProducts.products
                 self.products = allProducts.products
-                self.eventHandler?(.dataLoaded)
+                state = .dataLoaded
             })
             .store(in: &cancellables)
     }
     
     func deleteProduct(model: DataRequestModel, index: Int) {
-        self.eventHandler?(.loading)
+        state = .loading
         serviceManager?.deleteProduct(type: ProductEndPoint.deleteProduct(model: model))
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self else { return }
-                self.eventHandler?(.stopLoading)
+                state = .stopLoading
                 switch completion {
                 case .failure(let error):
-                    self.eventHandler?(.error(error))
+                    state = .error(error)
                 case .finished:
                     print("Finished")
                 }
@@ -58,28 +59,28 @@ final class ProductViewModel {
                 guard let self else { return }
                 if self.products.count > index {
                     self.products.remove(at: index)
-                    self.eventHandler?(.productDeleted)
+                    state = .productDeleted
                 }
             })
             .store(in: &cancellables)
     }
     
     func searchProducts(model: SearchData) {
-        self.eventHandler?(.loading)
+        state = .loading
         serviceManager?.searchProducts(type: ProductEndPoint.searchProduct(model: model))
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self else { return }
-                self.eventHandler?(.stopLoading)
+                state = .stopLoading
                 switch completion {
                 case .failure(let error):
-                    self.eventHandler?(.error(error))
+                    state = .error(error)
                 case .finished:
                     print("Finished")
                 }
             }, receiveValue: { [weak self] allProducts in
                 guard let self else { return }
                 self.products = allProducts.products
-                self.eventHandler?(.productSearched)
+                state = .productSearched
             })
             .store(in: &cancellables)
     }

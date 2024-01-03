@@ -24,6 +24,7 @@ class AddUserViewController: UIViewController {
     @Published private var lastName = ""
     @Published private var age = 0
     private var subscriptions: Set<AnyCancellable> = Set<AnyCancellable>()
+    private var cancellable: AnyCancellable?
     var addUserViewModel = AddUserViewModel(serviceManager: ServiceManager())
     private lazy var isAddNewUser: Bool = {
         return user?.id == nil
@@ -54,7 +55,10 @@ extension AddUserViewController {
         userImageView.setCornerRadius(radius: userImageView.frame.size.height / 2)
       //  initViewModel()
         setupUpdateUi()
-        observeEvent()
+        cancellable = addUserViewModel.$state.sink { [weak self] state in
+            print("state ==", state)
+            self?.observeEvent(state)
+        }
     }
     
     private func setupUpdateUi() {
@@ -78,27 +82,24 @@ extension AddUserViewController {
         }
     }
     
-    private func observeEvent() {
-        addUserViewModel.eventHandler = { [weak self] event in
-            guard let self else { return }
-            switch event {
-            case .loading:
-                // Indicator show
-                print("User loading....")
-            case .stopLoading:
-                // Indicator hide
-                print("Stop loading...")
-            case .dataLoaded:
-                print("Data loaded...")
-            case .error(let error):
-                print(error ?? "error default")
-            case .userAddedUpdated(let user):
-                print("User added/updated...", user)
-                addUpdateUserHandler?(user, isAddNewUser)
-                DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
-                }
+    private func observeEvent(_ state: AddUserViewModel.Event) {
+        switch state {
+        case .loading:
+            // Indicator show
+            print("Product loading....")
+        case .stopLoading:
+            // Indicator hide
+            print("Stop loading...")
+        case .userAddedUpdated(let user):
+            print("User added/updated...", user)
+            addUpdateUserHandler?(user, isAddNewUser)
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
             }
+        case .dataLoaded:
+            print("Data loaded...")
+        case .error(let error):
+            print(error ?? "error default")
         }
     }
     

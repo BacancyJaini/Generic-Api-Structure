@@ -21,6 +21,7 @@ class AddProductViewController: UIViewController {
     var product: Product?
     @Published private var productTitle = ""
     @Published private var productDescription = ""
+    private var cancellable: AnyCancellable?
     private var subscriptions: Set<AnyCancellable> = Set<AnyCancellable>()
     var addProductViewModel = AddProductViewModel(serviceManager: ServiceManager())
     private lazy var isAddNewProduct: Bool = {
@@ -52,7 +53,10 @@ extension AddProductViewController {
         productImageView.setCornerRadius(radius: productImageView.frame.size.height / 2)
       //  initViewModel()
         setupUpdateUi()
-        observeEvent()
+        cancellable = addProductViewModel.$state.sink { [weak self] state in
+            print("state ==", state)
+            self?.observeEvent(state)
+        }
     }
     
     func setupUpdateUi() {
@@ -74,26 +78,23 @@ extension AddProductViewController {
         }
     }
     
-    private func observeEvent() {
-        addProductViewModel.eventHandler = { [weak self] event in
-            guard let self else { return }
-            switch event {
-            case .loading:
-                // Indicator show
-                print("Product loading....")
-            case .stopLoading:
-                // Indicator hide
-                print("Stop loading...")
-            case .dataLoaded:
-                print("Data loaded...")
-            case .error(let error):
-                print(error ?? "error default")
-            case .productAddedUpdated(let product):
-                print("Product added/updated...", product)
-                addUpdateProductHandler?(product, isAddNewProduct)
-                DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
-                }
+    private func observeEvent(_ state: AddProductViewModel.Event) {
+        switch state {
+        case .loading:
+            // Indicator show
+            print("Product loading....")
+        case .stopLoading:
+            // Indicator hide
+            print("Stop loading...")
+        case .dataLoaded:
+            print("Data loaded...")
+        case .error(let error):
+            print(error ?? "error default")
+        case .productAddedUpdated(let product):
+            print("Product added/updated...", product)
+            addUpdateProductHandler?(product, isAddNewProduct)
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }

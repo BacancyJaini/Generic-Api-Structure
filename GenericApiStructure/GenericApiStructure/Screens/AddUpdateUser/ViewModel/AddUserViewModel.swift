@@ -9,48 +9,48 @@ import Foundation
 import Combine
 
 final class AddUserViewModel {
-    var eventHandler: ((_ event: Event) -> Void)? // Data Binding Closure
     var serviceManager: ServiceManagerProtocol?
     private var cancellables = Set<AnyCancellable>()
+    @Published private(set) var state: Event = .loading
     
     init(serviceManager: ServiceManagerProtocol) {
         self.serviceManager = serviceManager
     }
     
     func fetchUser(model: DataRequestModel) {
-        self.eventHandler?(.loading)
+        state = .loading
         serviceManager?.fetchUser(type: UserEndPoint.getUser(model: model))
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self else { return }
-                self.eventHandler?(.stopLoading)
+                state = .stopLoading
                 switch completion {
                 case .failure(let error):
-                    self.eventHandler?(.error(error))
+                    state = .error(error)
                 case .finished:
                     print("Finished")
                 }
             }, receiveValue: { [weak self] _ in
                 guard let self else { return }
-                self.eventHandler?(.dataLoaded)
+                state = .dataLoaded
             })
             .store(in: &cancellables)
     }
     
     func addOrUpdateUser(type: EndPointType) {
-        self.eventHandler?(.loading)
+        state = .loading
         serviceManager?.addOrUpdateUser(type: type)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self else { return }
-                self.eventHandler?(.stopLoading)
+                state = .stopLoading
                 switch completion {
                 case .failure(let error):
-                    self.eventHandler?(.error(error))
+                    state = .error(error)
                 case .finished:
                     print("Finished")
                 }
             }, receiveValue: { [weak self] user in
                 guard let self else { return }
-                self.eventHandler?(.userAddedUpdated(user: user))
+                state = .userAddedUpdated(user: user)
             })
             .store(in: &cancellables)
     }

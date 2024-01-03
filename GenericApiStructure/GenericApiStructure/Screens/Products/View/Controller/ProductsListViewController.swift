@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class ProductsListViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class ProductsListViewController: UIViewController {
     var productViewModel: ProductViewModel!
     var workItem: DispatchWorkItem?
     var serviceManager: ServiceManagerProtocol!
+    private var cancellable: AnyCancellable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,33 +33,32 @@ extension ProductsListViewController {
         productsTableView.register(UINib(nibName: "ProductsTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductsTableViewCell")
         productsTableView.register(UINib(nibName: "NoDataTableViewCell", bundle: nil), forCellReuseIdentifier: "NoDataTableViewCell")
         initViewModel()
-        observeEvent()
+        cancellable = productViewModel.$state.sink { [weak self] state in
+            self?.observeEvent(state)
+        }
     }
     
     private func initViewModel() {
         productViewModel.fetchProducts()
     }
     
-    private func observeEvent() {
-        productViewModel.eventHandler = { [weak self] event in
-            guard let self else { return }
-            switch event {
-            case .loading:
-                // Indicator show
-                print("Product loading....")
-            case .stopLoading:
-                // Indicator hide
-                print("Stop loading...")
-            case .dataLoaded, .productDeleted, .productSearched:
-                print("Data loaded/deleted/searched...")
-                DispatchQueue.main.async {
-                    self.productsTableView.reloadData()
-                }
-            case .error(let error):
-                print(error ?? "error default")
-                DispatchQueue.main.async {
-                    self.productsTableView.reloadData()
-                }
+    private func observeEvent(_ state: ProductViewModel.Event) {
+        switch state {
+        case .loading:
+            // Indicator show
+            print("Product loading....")
+        case .stopLoading:
+            // Indicator hide
+            print("Stop loading...")
+        case .dataLoaded, .productDeleted, .productSearched:
+            print("Data loaded/deleted/searched...")
+            DispatchQueue.main.async {
+                self.productsTableView.reloadData()
+            }
+        case .error(let error):
+            print(error ?? "error default")
+            DispatchQueue.main.async {
+                self.productsTableView.reloadData()
             }
         }
     }

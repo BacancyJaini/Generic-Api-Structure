@@ -9,48 +9,48 @@ import Foundation
 import Combine
 
 final class AddProductViewModel {
-    var eventHandler: ((_ event: Event) -> Void)? // Data Binding Closure
     var serviceManager: ServiceManagerProtocol?
     private var cancellables = Set<AnyCancellable>()
+    @Published private(set) var state: Event = .loading
     
     init(serviceManager: ServiceManagerProtocol) {
         self.serviceManager = serviceManager
     }
     
     func fetchProduct(model: DataRequestModel) {
-        self.eventHandler?(.loading)
+        state = .loading
         serviceManager?.fetchProduct(type: ProductEndPoint.getProduct(model: model))
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self else { return }
-                self.eventHandler?(.stopLoading)
+                state = .stopLoading
                 switch completion {
                 case .failure(let error):
-                    self.eventHandler?(.error(error))
+                    state = .error(error)
                 case .finished:
                     print("Finished")
                 }
             }, receiveValue: { [weak self] _ in
                 guard let self else { return }
-                self.eventHandler?(.dataLoaded)
+                state = .dataLoaded
             })
             .store(in: &cancellables)
     }
     
     func addOrUpdateProduct(type: EndPointType) {
-        self.eventHandler?(.loading)
+        state = .loading
         serviceManager?.addOrUpdateProduct(type: type)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self else { return }
-                self.eventHandler?(.stopLoading)
+                state = .stopLoading
                 switch completion {
                 case .failure(let error):
-                    self.eventHandler?(.error(error))
+                    state = .error(error)
                 case .finished:
                     print("Finished")
                 }
             }, receiveValue: { [weak self] product in
                 guard let self else { return }
-                self.eventHandler?(.productAddedUpdated(product: product))
+                state = .productAddedUpdated(product: product)
             })
             .store(in: &cancellables)
     }
